@@ -1,0 +1,23 @@
+.dashboard {
+    max-width: 1200px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.reminders {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.reminder-placeholder {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: black;
+}
