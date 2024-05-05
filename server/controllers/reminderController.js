@@ -2,8 +2,10 @@ const Reminder = require('../models/Reminder')
 const mongoose = require('mongoose')
 
 const getReminders = async (req, res) => {
+    const user_id = req.user._id
+
     try {
-        const reminders = await Reminder.find({}).sort({createdAt: -1})
+        const reminders = await Reminder.find({ user_id }).sort({createdAt: -1})
         res.status(200).json(reminders)
     } catch (err) {
         res.status(400).json({error: err.message})
@@ -24,8 +26,14 @@ const getReminder = async (req, res) => {
 
 const createReminder = async (req, res) => {
     const { title, date } = req.body
+
+    if (!title || !date) {
+        return res.status(400).json({error: 'Please provide a title and date'})
+    }
+
     try {
-        const reminder = await Reminder.create({ title, date })
+        const user_id = req.user._id
+        const reminder = await Reminder.create({ title, date, user_id })
         res.status(200).json(reminder)
     } catch (err) {
         res.status(400).json({error: err.message})

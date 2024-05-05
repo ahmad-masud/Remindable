@@ -47,7 +47,7 @@ function Create() {
             setDate('')
             setError('')
             dispatch({type: 'CREATE_REMINDER', payload: data})
-            navigate('/dashboard')
+            navigate('/')
         } else {
             setError(data.error)
         }

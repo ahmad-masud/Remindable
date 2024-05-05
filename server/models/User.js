@@ -73,4 +73,41 @@ userSchema.statics.login = async function (email, password) {
     return user
 }
 
+userSchema.statics.delete = async function (email) {
+    if (!email) {
+        throw new Error('Email is required')
+    }
+
+    const user = await this.findOneAndDelete({
+        email
+    })
+}
+
+userSchema.statics.update = async function (email, newFirstName, newLastName, newEmail, newPassword) {
+    if (!email) {
+        throw new Error('Email is required')
+    }
+
+    const user = await this.findOne({ email })
+
+    if (!user) {
+        throw new Error('Email not found')
+    }
+
+    if (newFirstName) {
+        user.firstName = newFirstName
+    }
+    if (newLastName) {
+        user.lastName = newLastName
+    }
+    if (newEmail) {
+        user.email = newEmail
+    }
+    if (newPassword) {
+        user.password = newPassword
+    }
+
+    await user.save()
+}
+
 module.exports = mongoose.model('User', userSchema)

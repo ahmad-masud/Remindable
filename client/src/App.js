@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard'
 import Create from './pages/Create'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Account from './pages/Account'
 import { useAuthContext } from './hooks/useAuthContext'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/create' element={user ? <Create/> : <Navigate to='/login'/> } />
         <Route path='/login' element={user ? <Navigate to='/'/> : <Login/>} />
         <Route path='/register' element={user ? <Navigate to='/'/> : <Register/>} />
+        <Route path='/account' element={user ? <Account/> : <Navigate to='/login'/>} />
       </Routes>
       <Footer />
     </div>

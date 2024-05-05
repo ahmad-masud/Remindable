@@ -6,9 +6,15 @@ export const useRegister = () => {
     const [isLoading, setIsLoading] = useState(false)
     const { dispatch } = useAuthContext()
 
-    const register = async (firstName, lastName, email, password) => {
+    const register = async (firstName, lastName, email, password, confirmPassword) => {
         setIsLoading(true)
         setError('')
+
+        if (password !== confirmPassword) {
+            setError('Passwords do not match')
+            setIsLoading(false)
+            return
+        }
 
         const response = await fetch('/api/users/register', {
             method: 'POST',

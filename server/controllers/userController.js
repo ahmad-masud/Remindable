@@ -29,6 +29,28 @@ const registerUser = async (req, res) => {
     }
 }
 
+const deleteUser = async (req, res) => {
+    const { email } = req.body
+
+    try {
+        const user = await User.delete(email)
+        res.status(200).json({ email })
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+
+const updateUser = async (req, res) => {
+    const { email, newFirstName, newLastName, newEmail, newPassword } = req.body
+
+    try {
+        const user = await User.update(email, newFirstName, newLastName, newEmail, newPassword)
+        res.status(200).json({ email, newEmail })
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+
 module.exports = {
     loginUser,
     registerUser

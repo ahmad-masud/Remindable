@@ -28,6 +28,11 @@ export const remindersReducer = (state, action) => {
                     reminder._id === action.payload._id ? action.payload : reminder
                 ).sort((a, b) => new Date(a.date) - new Date(b.date)),
             }
+        case 'CLEAR':
+            return {
+                ...state,
+                reminders: [],
+            }
         default:
             return state
     }

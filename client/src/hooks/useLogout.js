@@ -1,11 +1,14 @@
 import { useAuthContext } from "./useAuthContext"
+import { useRemindersContext } from "./useRemindersContext"
 
 export const useLogout = () => {
-    const { dispatch } = useAuthContext()
+    const { dispatch: authDispatch } = useAuthContext()
+    const { dispatch: remindersDispatch } = useRemindersContext()
 
     const logout = () => {
         localStorage.removeItem('user')
-        dispatch({ type: 'LOGOUT' })
+        authDispatch({ type: 'LOGOUT' })
+        remindersDispatch({ type: 'CLEAR' })
     }
 
     return { logout }

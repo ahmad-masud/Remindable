@@ -11,6 +11,10 @@ const reminderSchema = new mongoose.Schema({
     active: {
         type: Boolean,
         default: true
+    },
+    user_id: {
+        type: String,
+        required: true
     }
 }, { timestamps: true })
 

@@ -1,27 +1,35 @@
 import '../styles/Form.css'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { useRegister } from '../hooks/useRegister'
+import { useAuthContext } from '../hooks/useAuthContext'
 
-function Register() {
+function Account() {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
     const { register, error, isLoading } = useRegister()
+    const { user } = useAuthContext()
+
+    useEffect(() => {
+        if (user) {
+            setFirstName(user.firstName)
+            setLastName(user.lastName)
+            setEmail(user.email)
+        }
+    }, [user])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await register(firstName, lastName, email, password, confirmPassword)
+        await register(firstName, lastName, email, password)
     }
 
     return (
         <div className='form-container'>
             <div className='form-sub-container'>
                 <form className='form' onSubmit={handleSubmit}>
-                    <p className='form-title'>Register</p>
+                    <p className='form-title'>Account Management</p>
                     <div className='form-group'>
                         <label className='label' htmlFor='firstName'>First Name</label>
                         <input className='input' type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
@@ -38,17 +46,12 @@ function Register() {
                         <label className='label' htmlFor='password'>Password</label>
                         <input className='input' type='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
                     </div>
-                    <div className='form-group'>
-                        <label className='label' htmlFor='confirm-password'>Confirm Password</label>
-                        <input className='input' type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-                    </div>
-                    <button className='submit-button' type='submit' disabled={isLoading} >Register</button>
+                    <button className='submit-button' type='submit' disabled={isLoading} >Update</button>
                     {error && <p className='form-error'>{error}</p>}
-                    <p className='form-link'>Already have an account? <Link className='link' to='/login'>Login</Link></p>
                 </form>
             </div>
         </div>
     )
 }
 
-export default Register
+export default Account
