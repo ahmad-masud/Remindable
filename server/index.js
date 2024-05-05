@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const reminderRoutes = require('./routes/reminders')
+const userRoutes = require('./routes/user')
 const mongoose = require('mongoose')
 
 app.use(express.json())
@@ -10,6 +11,7 @@ app.use((req, res, next) => {
     next()
 })
 app.use('/api/reminders', reminderRoutes)
+app.use('/api/users', userRoutes)
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {

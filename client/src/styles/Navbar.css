@@ -35,16 +35,16 @@
 }
 
 .nav-link {
+    color: #333;
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
     transition: all ease-in-out 200ms;
     padding: 10px 15px;
-    border-radius: 10px;
-}
-
-.nav-link:nth-child(1) {
-    color: #333;
+    border-radius: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .nav-link:nth-child(2) {
@@ -52,7 +52,7 @@
     background: red;
 }
 
-.nav-link:nth-child(1):hover {
+.nav-link:hover {
     background: #f4f4f4;
 }
 

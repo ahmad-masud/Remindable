@@ -1,5 +1,6 @@
 import '../styles/Reminder.css'
 import { TrashFill } from 'react-bootstrap-icons'
+import { useRemindersContext } from '../hooks/useRemindersContext'
 
 function Reminder({ reminder }) {
     const formatTime = isoDateString => {
@@ -25,13 +26,15 @@ function Reminder({ reminder }) {
     const formattedTime = reminder.date ? formatTime(reminder.date) : 'No time provided'
     const formattedDate = reminder.date ? formatDate(reminder.date) : 'No date provided'
 
+    const {dispatch} = useRemindersContext()
+
     const handleClick = async () => {
         const response = await fetch(`/api/reminders/delete/${reminder._id}`, {
             method: 'DELETE'
         })
 
         if (response.ok) {
-            window.location.reload()
+            dispatch({type: 'DELETE_REMINDER', payload: reminder._id})
         }
     }
 

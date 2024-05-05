@@ -1,24 +1,27 @@
 import '../styles/Dashboard.css'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Reminder from '../components/Reminder'
 import { Plus } from 'react-bootstrap-icons'
 import { Link } from 'react-router-dom'
+import { useRemindersContext } from '../hooks/useRemindersContext'
 
 function Dashboard() {
-    const [reminders, setReminders] = useState(null)
+    const {reminders, dispatch} = useRemindersContext()
 
     useEffect(() => {
         const fetchReminders = async () => {
-            const response = await fetch('/api/reminders')
-            const data = await response.json()
-
-            if (response.ok) {
-                setReminders(data.sort((a, b) => new Date(a.date) - new Date(b.date)))
+            if (reminders.length === 0) {
+                const response = await fetch('/api/reminders')
+                const data = await response.json()
+    
+                if (response.ok) {
+                    dispatch({type: 'GET_REMINDERS', payload: data})
+                }
             }
         }
-
+    
         fetchReminders()
-    }, [])
+    }, [dispatch, reminders])
 
     return (
         <div className='dashboard'>
@@ -26,7 +29,7 @@ function Dashboard() {
                 {reminders && reminders.map(reminder => (
                     <Reminder key={reminder._id} reminder={reminder} />
                 ))}
-                <Link className='reminder-placeholder' to='/form'>
+                <Link className='reminder-placeholder' to='/create'>
                     <Plus size={100} />
                 </Link>
             </div>
