@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Account from './pages/Account'
 import ChangePassword from './pages/ChangePassword'
+import NotFound from './pages/NotFound'
 import { useAuthContext } from './hooks/useAuthContext'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path='/register' element={user ? <Navigate to='/'/> : <Register/>} />
         <Route path='/account' element={user ? <Account/> : <Navigate to='/login'/>} />
         <Route path='/changePassword' element={user ? <ChangePassword/> : <Navigate to='/login'/>} />
+        <Route path='*' element={<NotFound/>} />
       </Routes>
       <Footer />
     </div>

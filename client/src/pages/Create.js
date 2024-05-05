@@ -1,5 +1,5 @@
 import '../styles/Form.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useRemindersContext } from '../hooks/useRemindersContext'
 import { useAuthContext } from '../hooks/useAuthContext'
@@ -15,6 +15,10 @@ function Create() {
     const navigate = useNavigate()
 
     const { user } = useAuthContext()
+
+    useEffect(() => {
+        document.title = 'Create Reminder | Remindable';
+    }, [])
 
     const handleSubmit = async event => {
         event.preventDefault()

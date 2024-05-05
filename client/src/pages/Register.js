@@ -1,5 +1,5 @@
 import '../styles/Form.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useRegister } from '../hooks/useRegister'
 
@@ -10,6 +10,10 @@ function Register() {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const { register, error, isLoading } = useRegister()
+
+    useEffect(() => {
+        document.title = 'Register | Remindable';
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()

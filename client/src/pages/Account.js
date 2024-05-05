@@ -15,6 +15,8 @@ function Account() {
     const { user } = useAuthContext()
 
     useEffect(() => {
+        document.title = 'Account | Remindable';
+
         if (user) {
             setFirstName(user.firstName)
             setLastName(user.lastName)

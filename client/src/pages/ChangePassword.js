@@ -1,5 +1,5 @@
 import '../styles/Form.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useChangePassword } from '../hooks/useChangePassword'
 import { useAuthContext } from '../hooks/useAuthContext'
 
@@ -9,6 +9,10 @@ function ChangePassword() {
     const [confirmNewPassword, setConfirmNewPassword] = useState('')
     const { updatePassword, isLoading, error } = useChangePassword()
     const { user } = useAuthContext()
+
+    useEffect(() => {
+        document.title = 'Change Password | Remindable';
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()

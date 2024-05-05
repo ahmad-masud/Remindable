@@ -1,0 +1,134 @@
+.hero {
+    max-width: 1200px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+}
+
+.hero-text-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero-text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    opacity: 0.75;
+}
+
+.hero-button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .hero-title {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    
+    .hero-text {
+        font-size: 1rem;
+        font-weight: 400;
+        opacity: 0.75;
+    }
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    width: calc(100% - 40px);
+    margin: 40px auto;
+    gap: 40px;
+}
+
+.feature-image {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.feature {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.feature:nth-child(2) {
+    flex-direction: row-reverse;
+}
+
+.feature-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.feature:nth-child(odd) .feature-text-container {
+    align-items: flex-end;
+}
+
+.feature-title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.feature-text {
+    font-size: 1.25rem;
+    font-weight: 400;
+    opacity: 0.75;
+}
+
+@media screen and (max-width: 600px) {
+    .features {
+        align-items: center;
+    }
+
+    .feature {
+        flex-direction: column-reverse;
+        width: 80%;
+    }
+    
+    .feature-image {
+        width: 100%;
+    }
+    
+    .feature:nth-child(2) {
+        flex-direction: column-reverse;
+    }
+    
+    .feature:nth-child(odd) .feature-text-container {
+        align-items: center;
+    }
+
+    .feature-text-container {
+        align-items: center;
+    }
+}
