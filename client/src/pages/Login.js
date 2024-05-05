@@ -27,7 +27,7 @@ function Login() {
                         <label className='label' htmlFor='password'>Password</label>
                         <input className='input' type='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
                     </div>
-                    <button className='submit-button' type='submit'>Login</button>
+                    <button className='submit-button' type='submit' disabled={isLoading}>Login</button>
                     {error && <p className='form-error'>{error}</p>}
                     <p>Need an account? <Link className='link' to='/register'>Register</Link></p>
                 </form>

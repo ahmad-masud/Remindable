@@ -4,14 +4,20 @@ import Reminder from '../components/Reminder'
 import { Plus } from 'react-bootstrap-icons'
 import { Link } from 'react-router-dom'
 import { useRemindersContext } from '../hooks/useRemindersContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 function Dashboard() {
     const {reminders, dispatch} = useRemindersContext()
+    const { user } = useAuthContext()
 
     useEffect(() => {
         const fetchReminders = async () => {
             if (reminders.length === 0) {
-                const response = await fetch('/api/reminders')
+                const response = await fetch('/api/reminders', {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`
+                    }
+                })
                 const data = await response.json()
     
                 if (response.ok) {
@@ -19,9 +25,10 @@ function Dashboard() {
                 }
             }
         }
-    
-        fetchReminders()
-    }, [dispatch, reminders])
+        if (user) {
+            fetchReminders()
+        }
+    }, [dispatch, reminders, user])
 
     return (
         <div className='dashboard'>

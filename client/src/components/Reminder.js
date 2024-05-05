@@ -1,6 +1,7 @@
 import '../styles/Reminder.css'
 import { TrashFill } from 'react-bootstrap-icons'
 import { useRemindersContext } from '../hooks/useRemindersContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 function Reminder({ reminder }) {
     const formatTime = isoDateString => {
@@ -26,11 +27,18 @@ function Reminder({ reminder }) {
     const formattedTime = reminder.date ? formatTime(reminder.date) : 'No time provided'
     const formattedDate = reminder.date ? formatDate(reminder.date) : 'No date provided'
 
-    const {dispatch} = useRemindersContext()
+    const { dispatch } = useRemindersContext()
+    const { user } = useAuthContext()
 
     const handleClick = async () => {
+        if (!user) {
+            return
+        }
         const response = await fetch(`/api/reminders/delete/${reminder._id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
 
         if (response.ok) {

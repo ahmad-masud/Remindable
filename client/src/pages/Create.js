@@ -2,6 +2,7 @@ import '../styles/Form.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useRemindersContext } from '../hooks/useRemindersContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 function Create() {
     const [title, setTitle] = useState('')
@@ -13,8 +14,15 @@ function Create() {
 
     const navigate = useNavigate()
 
+    const { user } = useAuthContext()
+
     const handleSubmit = async event => {
         event.preventDefault()
+
+        if (!user) {
+            setError('You must be logged in to create a reminder')
+            return
+        }
 
         const dateTime = new Date(`${date}T${time}`)
 
@@ -26,7 +34,8 @@ function Create() {
         const response = await fetch('/api/reminders/create', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             },
             body: JSON.stringify({ title, date: dateTime.toISOString() })
         })

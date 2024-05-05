@@ -7,6 +7,9 @@ const {
     deleteReminder,
     updateReminder
 } = require('../controllers/reminderController')
+const requireAuth = require('../middleware/requireAuth')
+
+router.use(requireAuth)
 
 router.get('/', getReminders)
 
