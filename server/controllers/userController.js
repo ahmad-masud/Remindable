@@ -11,7 +11,9 @@ const loginUser = async (req, res) => {
     try {
         const user = await User.login(email, password)
         const token = createToken(user._id)
-        res.status(200).json({ email, token })
+        const firstName = user.firstName
+        const lastName = user.lastName
+        res.status(200).json({ firstName, lastName, email, token })
     } catch (error) {     
         res.status(400).json({ error: error.message })
     }
@@ -23,7 +25,7 @@ const registerUser = async (req, res) => {
     try {
         const user = await User.register(firstName, lastName, email, password)
         const token = createToken(user._id)
-        res.status(200).json({ email, token })
+        res.status(200).json({ firstName, lastName, email, token })
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
@@ -41,11 +43,22 @@ const deleteUser = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-    const { email, newFirstName, newLastName, newEmail, newPassword } = req.body
+    const { email, newFirstName, newLastName, newEmail } = req.body
 
     try {
-        const user = await User.update(email, newFirstName, newLastName, newEmail, newPassword)
-        res.status(200).json({ email, newEmail })
+        const user = await User.update(email, newFirstName, newLastName, newEmail)
+        res.status(200).json({ firstName: newFirstName, lastName: newLastName, email: newEmail })
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+
+const changePassword = async (req, res) => {
+    const { email, currentPassword, newPassword } = req.body
+
+    try {
+        const user = await User.changePassword(email, currentPassword, newPassword)
+        res.status(200).json({ email })
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
@@ -53,5 +66,8 @@ const updateUser = async (req, res) => {
 
 module.exports = {
     loginUser,
-    registerUser
+    registerUser,
+    deleteUser,
+    updateUser,
+    changePassword
 }

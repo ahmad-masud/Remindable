@@ -45,6 +45,12 @@
     font-size: 1rem;
 }
 
+.form-buttons {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
 .submit-button {
     font-size: 1rem;
     font-weight: 600;
@@ -59,7 +65,44 @@
     width: 100%;
 }
 
+.delete-button {
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all ease-in-out 200ms;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background: red;
+    cursor: pointer;
+    width: 100%;
+}
+
+.password-button {
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all ease-in-out 200ms;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background: red;
+    cursor: pointer;
+    width: calc(100% - 30px);
+    text-align: center;
+}
+
 .submit-button:hover {
+    background: #ad0000;
+}
+
+.delete-button:hover {
+    background: #ad0000;
+}   
+
+.password-button:hover {
     background: #ad0000;
 }
 

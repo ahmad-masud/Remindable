@@ -8,6 +8,7 @@ import Create from './pages/Create'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Account from './pages/Account'
+import ChangePassword from './pages/ChangePassword'
 import { useAuthContext } from './hooks/useAuthContext'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/login' element={user ? <Navigate to='/'/> : <Login/>} />
         <Route path='/register' element={user ? <Navigate to='/'/> : <Register/>} />
         <Route path='/account' element={user ? <Account/> : <Navigate to='/login'/>} />
+        <Route path='/changePassword' element={user ? <ChangePassword/> : <Navigate to='/login'/>} />
       </Routes>
       <Footer />
     </div>

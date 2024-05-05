@@ -1,20 +1,24 @@
 import '../styles/Form.css'
 import { useState, useEffect } from 'react'
-import { useRegister } from '../hooks/useRegister'
+import { useUpdate } from '../hooks/useUpdate'
+import { useDelete } from '../hooks/useDelete'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { Link } from 'react-router-dom'
 
 function Account() {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
+    const [oldEmail, setOldEmail] = useState('')
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const { register, error, isLoading } = useRegister()
+    const { updateUser, isLoading, error } = useUpdate()
+    const { deleteUser } = useDelete()
     const { user } = useAuthContext()
 
     useEffect(() => {
         if (user) {
             setFirstName(user.firstName)
             setLastName(user.lastName)
+            setOldEmail(user.email)
             setEmail(user.email)
         }
     }, [user])
@@ -22,7 +26,16 @@ function Account() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await register(firstName, lastName, email, password)
+        await updateUser(oldEmail, firstName, lastName, email)
+
+        if (!error) {
+            setOldEmail(email)
+            alert('Account updated successfully!')
+        }
+    }
+
+    const handleDelete = async () => {
+        if (window.confirm('Are you sure you want to delete your account?')) await deleteUser(email)
     }
 
     return (
@@ -42,11 +55,13 @@ function Account() {
                         <label className='label' htmlFor='email'>Email</label>
                         <input className='input' type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
                     </div>
-                    <div className='form-group'>
-                        <label className='label' htmlFor='password'>Password</label>
-                        <input className='input' type='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    <div className='form-group'>  
+                        <Link to='/changePassword' className='password-button' >Change Password</Link>
                     </div>
-                    <button className='submit-button' type='submit' disabled={isLoading} >Update</button>
+                    <div className='form-buttons'>
+                        <button className='submit-button' type='submit' disabled={isLoading} >Update Account</button>
+                        <button className='delete-button' type='button' onClick={handleDelete}>Delete Account</button>
+                    </div>
                     {error && <p className='form-error'>{error}</p>}
                 </form>
             </div>

@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 const validator = require('validator')
+const Reminder = require('../models/Reminder')
 
 const userSchema = new Schema({
     firstName: {
@@ -78,12 +79,14 @@ userSchema.statics.delete = async function (email) {
         throw new Error('Email is required')
     }
 
-    const user = await this.findOneAndDelete({
-        email
-    })
+    const user = await this.findOne({ email })
+    
+    await Reminder.deleteMany({ user_id: user._id })
+
+    await this.findOneAndDelete({ email })
 }
 
-userSchema.statics.update = async function (email, newFirstName, newLastName, newEmail, newPassword) {
+userSchema.statics.update = async function (email, newFirstName, newLastName, newEmail) {
     if (!email) {
         throw new Error('Email is required')
     }
@@ -103,9 +106,35 @@ userSchema.statics.update = async function (email, newFirstName, newLastName, ne
     if (newEmail) {
         user.email = newEmail
     }
-    if (newPassword) {
-        user.password = newPassword
+
+    await user.save()
+}
+
+userSchema.statics.changePassword = async function (email, oldPassword, newPassword) {
+    if (!email || !oldPassword || !newPassword) {
+        throw new Error('All fields are required')
     }
+
+    const user = await this.findOne({ email })
+
+    if (!user) {
+        throw new Error('Email not found')
+    }
+
+    const match = await bcrypt.compare(oldPassword, user.password)
+
+    if (!match) {
+        throw new Error('Password is incorrect')
+    }
+
+    if (!validator.isStrongPassword(newPassword)) {
+        throw new Error('Password is not strong enough')
+    }
+
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(newPassword, salt)
+
+    user.password = hash
 
     await user.save()
 }
