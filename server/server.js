@@ -4,7 +4,7 @@ const app = express()
 const reminderRoutes = require('./routes/reminders')
 const userRoutes = require('./routes/user')
 const mongoose = require('mongoose')
-const port = process.env.PORT || 3001
+const port = 4000
 
 app.use(express.json())
 app.use((req, res, next) => {
