@@ -19,10 +19,11 @@ function App() {
     <div className='app'>
       <Navbar />
       <Routes>
-        <Route path='/' element={user ? <Dashboard /> : <Home/>} />
+        <Route path='/' element={<Home/>} />
+        <Route path='/dashboard' element={user ? <Dashboard/> : <Navigate to='/login'/>} />
         <Route path='/create' element={user ? <Create/> : <Navigate to='/login'/> } />
-        <Route path='/login' element={user ? <Navigate to='/'/> : <Login/>} />
-        <Route path='/register' element={user ? <Navigate to='/'/> : <Register/>} />
+        <Route path='/login' element={user ? <Navigate to='/dashboard'/> : <Login/>} />
+        <Route path='/register' element={user ? <Navigate to='/dashboard'/> : <Register/>} />
         <Route path='/account' element={user ? <Account/> : <Navigate to='/login'/>} />
         <Route path='/changePassword' element={user ? <ChangePassword/> : <Navigate to='/login'/>} />
         <Route path='*' element={<NotFound/>} />

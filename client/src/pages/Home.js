@@ -1,9 +1,13 @@
 import { useEffect } from 'react'
 import '../styles/Home.css'
 import { Link } from 'react-router-dom'
-import email from '../assets/email.png'
-import form from '../assets/form.png'
-import reminders from '../assets/reminders.png'
+import feature1 from '../assets/1.png'
+import feature2 from '../assets/2.png'
+import feature3 from '../assets/3.png'
+import heroImage from '../assets/hero.png'
+import ClockFill from 'react-bootstrap-icons/dist/icons/clock-fill'
+import FilterSquareFill from 'react-bootstrap-icons/dist/icons/filter-square-fill'
+import EnvelopeFill from 'react-bootstrap-icons/dist/icons/envelope-fill'
 
 function Home() {
     useEffect(() => {
@@ -14,34 +18,41 @@ function Home() {
         <div className='home'>
             <div className='hero'>
                 <div className='hero-text-container'>
-                    <p className='hero-title'>The easy-to-use reminder tool</p>
+                    <p className='hero-title'>The easy-to-use email reminder tool</p>
                     <p className='hero-text'>Automatically sends you a scheduled email after you create a reminder</p>
                     <Link to='/register' className='hero-button'>Get Started</Link>
                 </div>
+                <img className='hero-image' src={heroImage} alt='hero' />
             </div>
-            <p className='title'>Features</p>
-            <div className='features'>
-                <div className='feature'>
-                    <img className='feature-image' src={form} alt='form' />
-                    <div className='feature-text-container'>
-                        <p className='feature-title'>Simple</p>
-                        <p className='feature-text'>Create a reminder in seconds</p>
+            <div className='features-container'>
+                <div className='features'>
+                    <div className='feature'>
+                        <img className='feature-image' src={feature1} alt='form' />
+                        <div className='feature-text-container'>
+                            <p className='feature-title'><ClockFill /> Get started in <span style={{color: "red"}}>seconds</span></p>
+                            <p className='feature-text'>Create reminders easily with an intuitive ui. All you need is two things the title and date of the reminder.</p>
+                        </div>
+                    </div>
+                    <div className='feature'>
+                        <img className='feature-image' src={feature2} alt='reminders' />
+                        <div className='feature-text-container'>
+                            <p className='feature-title'><FilterSquareFill /> <span style={{color: "red"}}>Organize</span> your reminders</p>
+                            <p className='feature-text'>Reminders are organized by date and time and you can set the priority of certain reminders if they are more important.</p>
+                        </div>
+                    </div>
+                    <div className='feature'>
+                        <img className='feature-image' src={feature3} alt='email' />
+                        <div className='feature-text-container'>
+                            <p className='feature-title'><EnvelopeFill /> Receive an <span style={{color: "red"}}>email</span></p>
+                            <p className='feature-text'>Receive a friendly email when it's time for your reminder so you don't forgot when you have an important event.</p>
+                        </div>
                     </div>
                 </div>
-                <div className='feature'>
-                    <img className='feature-image' src={reminders} alt='reminders' />
-                    <div className='feature-text-container'>
-                        <p className='feature-title'>Customizable</p>
-                        <p className='feature-text'>Set the date and time for your reminder</p>
-                    </div>
-                </div>
-                <div className='feature'>
-                    <img className='feature-image' src={email} alt='email' />
-                    <div className='feature-text-container'>
-                        <p className='feature-title'>Email</p>
-                        <p className='feature-text'>Receive an email when it's time for your reminder</p>
-                    </div>
-                </div>
+            </div>
+            <div className='anti-hero'>
+                <p className='anti-hero-title'>Get started with Remindable today</p>
+                <p className='anti-hero-text'>Never miss a reminder again</p>
+                <Link to='/register' className='anti-hero-button'>Make an account</Link>
             </div>
         </div>
     )

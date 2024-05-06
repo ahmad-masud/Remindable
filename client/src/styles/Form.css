@@ -94,15 +94,22 @@
     text-align: center;
 }
 
-.submit-button:hover {
-    background: #ad0000;
+.logout-button {
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all ease-in-out 200ms;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background: red;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
 }
 
-.delete-button:hover {
-    background: #ad0000;
-}   
-
-.password-button:hover {
+.submit-button:hover, .delete-button:hover, .password-button:hover, .logout-button:hover {
     background: #ad0000;
 }
 

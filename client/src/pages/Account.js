@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import { useUpdate } from '../hooks/useUpdate'
 import { useDelete } from '../hooks/useDelete'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useLogout } from '../hooks/useLogout'
 
 function Account() {
     const [firstName, setFirstName] = useState('')
@@ -13,6 +14,8 @@ function Account() {
     const { updateUser, isLoading, error } = useUpdate()
     const { deleteUser } = useDelete()
     const { user } = useAuthContext()
+    const { logout } = useLogout()
+    const navigate = useNavigate()
 
     useEffect(() => {
         document.title = 'Account | Remindable';
@@ -40,6 +43,11 @@ function Account() {
         if (window.confirm('Are you sure you want to delete your account?')) await deleteUser(email)
     }
 
+    const handleLogout = async () => {
+        await logout()
+        navigate('/login')
+    }
+
     return (
         <div className='form-container'>
             <div className='form-sub-container'>
@@ -63,6 +71,9 @@ function Account() {
                     <div className='form-buttons'>
                         <button className='submit-button' type='submit' disabled={isLoading} >Update Account</button>
                         <button className='delete-button' type='button' onClick={handleDelete}>Delete Account</button>
+                    </div>
+                    <div className='form-group'>
+                        <button className='logout-button' type='button' onClick={handleLogout}>Logout</button>
                     </div>
                     {error && <p className='form-error'>{error}</p>}
                 </form>
