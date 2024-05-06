@@ -1,6 +1,6 @@
 
 # Remindable
-![Remindable](resources/Remindable.gif)
+![Remindable](resources/remindable.gif)
 
 Remindable is a simple yet powerful reminder app built using the MERN stack (MongoDB, Express, React, Node.js). With Remindable, users can create reminders with a title, date, and time, and get notified via email at the specified date and time.
 
