@@ -24,12 +24,12 @@ function Login() {
                 <form className='form' onSubmit={handleSubmit}>
                     <p className='form-title'>Login</p>
                     <div className='form-group'>         
-                        <label className='label' htmlFor='email'>Email</label>
-                        <input className='input' type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <label className='label required' htmlFor='email'>Email</label>
+                        <input className='input' type='email' value={email} placeholder='Enter your email address...' onChange={(e) => setEmail(e.target.value)} required />
                     </div>
                     <div className='form-group'>
-                        <label className='label' htmlFor='password'>Password</label>
-                        <input className='input' type='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+                        <label className='label required' htmlFor='password'>Password</label>
+                        <input className='input' type='password' value={password} placeholder='Enter your password...' onChange={(e) => setPassword(e.target.value)} required />
                     </div>
                     <button className='submit-button' type='submit' disabled={isLoading}>Login</button>
                     {error && <p className='form-error'>{error}</p>}

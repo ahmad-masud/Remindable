@@ -23,12 +23,14 @@
 .hero-title {
     font-size: 3rem;
     font-weight: bold;
+    color: #3F3D56;
 }
 
 .hero-text {
     font-size: 1.5rem;
     font-weight: 400;
     opacity: 0.75;
+    color: #3F3D56;
 }
 
 .hero-button {
@@ -107,12 +109,14 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    color: #3F3D56;
 }
 
 .feature-text {
     font-size: 1.25rem;
     font-weight: 400;
     opacity: 0.75;
+    color: #3F3D56;
 }
 
 @media screen and (max-width: 600px) {
@@ -160,12 +164,14 @@
 .anti-hero-title {
     font-size: 2.5rem;
     font-weight: 700;
+    color: #3F3D56;
 }
 
 .anti-hero-text {
     font-size: 1.25rem;
     font-weight: 400;
     opacity: 0.75;
+    color: #3F3D56;
 }
 
 .anti-hero-button {

@@ -13,6 +13,7 @@
     font-weight: 600;
     display: flex;
     justify-content: space-between;
+    color: #3F3D56;
 }
 
 .reminder-delete {

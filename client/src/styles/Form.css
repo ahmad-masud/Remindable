@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 100px);
+    height: 100vh;
 }
 
 .form-sub-container {
@@ -28,6 +28,7 @@
 .form-title {
     font-size: 1.5rem;
     font-weight: 600;
+    color: #3F3D56;
 }
 
 .form-group {
@@ -43,6 +44,16 @@
     border-radius: 5px;
     outline: none;
     font-size: 1rem;
+    color: #3F3D56;
+}
+
+.label {
+    color: #3F3D56;
+}
+
+.label.required::after {
+    content: " *";
+    color: red;
 }
 
 .form-buttons {

@@ -8,6 +8,16 @@
     height: 70px;
     position: fixed;
     z-index: 1000;
+    transition: all ease-in-out 200ms;
+    top: 0;
+}
+
+.navbar-container.show {
+    transform: translateY(0);
+}
+
+.navbar-container.hide {
+    transform: translateY(-100%);
 }
 
 .navbar {
@@ -36,7 +46,7 @@
 }
 
 .nav-link {
-    color: #333;
+    color: #3F3D56;
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;

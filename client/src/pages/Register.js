@@ -27,24 +27,24 @@ function Register() {
                 <form className='form' onSubmit={handleSubmit}>
                     <p className='form-title'>Register</p>
                     <div className='form-group'>
-                        <label className='label' htmlFor='firstName'>First Name</label>
-                        <input className='input' type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+                        <label className='label required' htmlFor='firstName'>First Name</label>
+                        <input className='input' type='text' value={firstName} placeholder='Enter your first name...' onChange={(e) => setFirstName(e.target.value)} required />
                     </div>
                     <div className='form-group'>
-                        <label className='label' htmlFor='lastName'>Last Name</label>
-                        <input className='input' type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+                        <label className='label required' htmlFor='lastName'>Last Name</label>
+                        <input className='input' type='text' value={lastName} placeholder='Enter your last name...' onChange={(e) => setLastName(e.target.value)} required />
                     </div>
                     <div className='form-group'>         
-                        <label className='label' htmlFor='email'>Email</label>
-                        <input className='input' type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <label className='label required' htmlFor='email'>Email</label>
+                        <input className='input' type='email' value={email} placeholder='Enter your email address...' onChange={(e) => setEmail(e.target.value)} required />
                     </div>
                     <div className='form-group'>
-                        <label className='label' htmlFor='password'>Password</label>
-                        <input className='input' type='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+                        <label className='label required' htmlFor='password'>Password</label>
+                        <input className='input' type='password' value={password} placeholder='Enter your password...' onChange={(e) => setPassword(e.target.value)} required />
                     </div>
                     <div className='form-group'>
-                        <label className='label' htmlFor='confirm-password'>Confirm Password</label>
-                        <input className='input' type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                        <label className='label required' htmlFor='confirm-password'>Confirm Password</label>
+                        <input className='input' type='password' value={confirmPassword} placeholder='Confirm your password...' onChange={(e) => setConfirmPassword(e.target.value)} required />
                     </div>
                     <button className='submit-button' type='submit' disabled={isLoading} >Register</button>
                     {error && <p className='form-error'>{error}</p>}

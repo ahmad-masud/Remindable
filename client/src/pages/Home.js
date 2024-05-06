@@ -18,7 +18,7 @@ function Home() {
         <div className='home'>
             <div className='hero'>
                 <div className='hero-text-container'>
-                    <p className='hero-title'>The easy-to-use email reminder tool</p>
+                    <p className='hero-title'>An easy-to-use email reminder tool</p>
                     <p className='hero-text'>Automatically sends you a scheduled email after you create a reminder</p>
                     <Link to='/register' className='hero-button'>Get Started</Link>
                 </div>
