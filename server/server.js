@@ -11,6 +11,7 @@ app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
 })
+app.use('/', "Remindable")
 app.use('/api/reminders', reminderRoutes)
 app.use('/api/users', userRoutes)
 
