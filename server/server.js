@@ -24,3 +24,5 @@ mongoose.connect(process.env.MONGODB_URI)
     .catch(err => {
         console.log('Error connecting to MongoDB', err.message)
     })
+
+module.exports = app
