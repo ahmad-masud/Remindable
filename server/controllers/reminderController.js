@@ -25,7 +25,7 @@ const getReminder = async (req, res) => {
 }
 
 const createReminder = async (req, res) => {
-    const { title, date } = req.body
+    const { title, description, date } = req.body
 
     if (!title || !date) {
         return res.status(400).json({error: 'Please provide a title and date'})
@@ -33,7 +33,7 @@ const createReminder = async (req, res) => {
 
     try {
         const user_id = req.user._id
-        const reminder = await Reminder.create({ title, date, user_id })
+        const reminder = await Reminder.create({ title, description, date, user_id })
         res.status(200).json(reminder)
     } catch (err) {
         res.status(400).json({error: err.message})
@@ -57,12 +57,12 @@ const deleteReminder = async (req, res) => {
 
 const updateReminder = async (req, res) => {
     const { id } = req.params
-    const { title, date } = req.body
+    const { title, description, date } = req.body
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(400).json({error: 'Invalid ID'})
     }
 
-    const reminder = await Reminder.findByIdAndUpdate(id, { title, date }, { new: true })
+    const reminder = await Reminder.findByIdAndUpdate(id, { title, description, date }, { new: true })
 
     if (!reminder) {
         return res.status(404).json({error: 'Reminder not found'})

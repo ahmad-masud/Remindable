@@ -47,6 +47,11 @@
     color: #3F3D56;
 }
 
+.textarea {
+    resize: vertical;
+    font-family: 'Roboto', sans-serif;
+}
+
 .label {
     color: #3F3D56;
 }

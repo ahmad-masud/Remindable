@@ -30,15 +30,15 @@ function ChangePassword() {
                 <form className='form' onSubmit={handleSubmit}>
                     <p className='form-title'>Change Password</p>
                     <div className='form-group'>
-                        <label className='label' htmlFor='currentPassword'>Current Password</label>
+                        <label className='label required' htmlFor='currentPassword'>Current Password</label>
                         <input className='input' type='password' value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} required />
                     </div>
                     <div className='form-group'>
-                        <label className='label' htmlFor='newPassword'>New Password</label>
+                        <label className='label required' htmlFor='newPassword'>New Password</label>
                         <input className='input' type='password' value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
                     </div>
                     <div className='form-group'>
-                        <label className='label' htmlFor='confirmNewPassword'>Confirm New Password</label>
+                        <label className='label required' htmlFor='confirmNewPassword'>Confirm New Password</label>
                         <input className='input' type='password' value={confirmNewPassword} onChange={(e) => setConfirmNewPassword(e.target.value)} required />
                     </div>
                     <button className='submit-button' type='submit' disabled={isLoading} >Submit</button>

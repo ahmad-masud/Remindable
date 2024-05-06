@@ -38,10 +38,10 @@ Remindable is a simple yet powerful reminder app built using the MERN stack (Mon
 
 2. **Backend Setup:**
 
-   - Navigate to the backend folder:
+   - Navigate to the server folder:
 
      ```bash
-     cd backend
+     cd server
      ```
 
    - Install dependencies:
@@ -50,7 +50,7 @@ Remindable is a simple yet powerful reminder app built using the MERN stack (Mon
      npm install
      ```
 
-   - Create a `.env` file in the `backend` directory with the following variables:
+   - Create a `.env` file in the `server` directory with the following variables:
 
      ```env
      PORT=5000
@@ -61,15 +61,15 @@ Remindable is a simple yet powerful reminder app built using the MERN stack (Mon
    - Start the backend server:
 
      ```bash
-     npm run dev
+     npm start
      ```
 
 3. **Frontend Setup:**
 
-   - Navigate to the frontend folder:
+   - Navigate to the client folder:
 
      ```bash
-     cd ../frontend
+     cd ../client
      ```
 
    - Install dependencies:
