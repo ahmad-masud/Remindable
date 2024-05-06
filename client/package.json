@@ -1,5 +1,5 @@
 {
-  "proxy": "https://remindable.vercel.app/",
+  "proxy": "https://remindable-api.vercel.app/",
   "name": "client",
   "version": "0.1.0",
   "private": true,
