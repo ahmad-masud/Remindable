@@ -19,9 +19,6 @@ app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
 })
-app.use('/', (req, res) => {
-    res.send('Remindable API')
-})
 app.use('/api/reminders', cors(), reminderRoutes)
 app.use('/api/users', cors(), userRoutes)
 
