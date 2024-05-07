@@ -20,8 +20,8 @@ app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
 })
-app.use('/api/reminders', cors(), reminderRoutes)
-app.use('/api/users', cors(), userRoutes)
+app.use('/api/reminders', reminderRoutes)
+app.use('/api/users', userRoutes)
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
