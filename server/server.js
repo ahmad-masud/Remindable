@@ -10,6 +10,7 @@ const port = 4000
 app.use(cors(
     {
         origin: 'https://remindable.vercel.app',
+        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
         credentials: true
     }
 ))
