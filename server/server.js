@@ -22,8 +22,8 @@ app.use((req, res, next) => {
 app.use('/', (req, res) => {
     res.send('Remindable API')
 })
-app.use('/api/reminders', reminderRoutes)
-app.use('/api/users', userRoutes)
+app.use('/api/reminders', cors(), reminderRoutes)
+app.use('/api/users', cors(), userRoutes)
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
