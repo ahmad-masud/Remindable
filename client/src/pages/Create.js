@@ -36,7 +36,7 @@ function Create() {
             return
         }
 
-        const response = await fetch('/api/reminders/create', {
+        const response = await fetch(`${process.env.API_URL}/api/reminders/create`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

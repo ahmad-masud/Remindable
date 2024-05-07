@@ -14,7 +14,7 @@ function Dashboard() {
         document.title = 'Dashboard | Remindable'
         const fetchReminders = async () => {
             if (reminders.length === 0) {
-                const response = await fetch('/api/reminders', {
+                const response = await fetch(`${process.env.API_URL}/api/reminders`, {
                     headers: {
                         Authorization: `Bearer ${user.token}`
                     }

@@ -20,7 +20,7 @@ export const useChangePassword = () => {
             return
         }
 
-        const response = await fetch('/api/users/changePassword', {
+        const response = await fetch(`${process.env.API_URL}/api/users/changePassword`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
