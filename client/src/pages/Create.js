@@ -36,7 +36,7 @@ function Create() {
             return
         }
 
-        const response = await fetch(`http://remindable-api.vercel.app/api/reminders/create`, {
+        const response = await fetch(`https://remindable-api.vercel.app/api/reminders/create`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

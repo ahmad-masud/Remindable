@@ -20,7 +20,7 @@ export const useChangePassword = () => {
             return
         }
 
-        const response = await fetch(`http://remindable-api.vercel.app/api/users/changePassword`, {
+        const response = await fetch(`https://remindable-api.vercel.app/api/users/changePassword`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

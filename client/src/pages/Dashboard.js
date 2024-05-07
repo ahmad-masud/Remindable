@@ -14,7 +14,7 @@ function Dashboard() {
         document.title = 'Dashboard | Remindable'
         const fetchReminders = async () => {
             if (reminders.length === 0) {
-                const response = await fetch(`http://remindable-api.vercel.app/api/reminders`, {
+                const response = await fetch(`https://remindable-api.vercel.app/api/reminders`, {
                     headers: {
                         Authorization: `Bearer ${user.token}`
                     }
