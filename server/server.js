@@ -9,7 +9,7 @@ const port = 4000
 
 app.use(cors(
     {
-        origin: 'https://remindable.vercel.app/',
+        origin: 'https://remindable.vercel.app',
         credentials: true
     }
 ))
