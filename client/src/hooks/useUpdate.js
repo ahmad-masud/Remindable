@@ -10,7 +10,7 @@ export const useUpdate = () => {
         setIsLoading(true)
         setError('')
 
-        const response = await fetch(`${process.env.API_URL}/api/users/update`, {
+        const response = await fetch(`http://remindable-api.vercel.app/api/users/update`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

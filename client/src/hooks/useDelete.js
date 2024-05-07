@@ -10,7 +10,7 @@ export const useDelete = () => {
         setIsLoading(true)
         setError('')
 
-        const response = await fetch(`${process.env.API_URL}/api/users/delete`, {
+        const response = await fetch(`http://remindable-api.vercel.app/api/users/delete`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
